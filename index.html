@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אפליקציית סטודנטים | לימודי חוץ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Heebo', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 flex justify-center items-center min-h-screen">
+
+    <div class="w-full max-w-md bg-white min-h-[85vh] shadow-2xl rounded-3xl overflow-hidden flex flex-col justify-between border border-slate-100">
+        
+        <div class="p-8 text-center mt-8">
+            <div class="w-20 h-20 bg-blue-600 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-blue-200 mb-4">
+                <span class="text-white text-3xl font-bold">לחו"צ</span>
+            </div>
+            <h1 class="text-2xl font-bold text-slate-800">לימודי חוץ</h1>
+            <p class="text-slate-500 text-sm mt-1">פורטל הסטודנטים האישי שלך</p>
+        </div>
+
+        <div class="px-8 flex-1 flex flex-col justify-center">
+            <div id="login-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-600 mb-1">תעודת זהות / דואר אלקטרוני</label>
+                    <input type="text" id="username" placeholder="הקלידו ת"ז או מייל" 
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-right">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-600 mb-1">סיסמה</label>
+                    <input type="password" id="password" placeholder="••••••••" 
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-right">
+                </div>
+                
+                <button id="btn-login" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl shadow-lg shadow-blue-200 transition-all mt-2">
+                    כניסה למערכת
+                </button>
+            </div>
+
+            <div id="2fa-form" class="space-y-4 hidden">
+                <div class="text-center mb-4">
+                    <p class="text-sm text-slate-600">שלחנו קוד אימות זמני לנייד שלך</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-600 mb-1">קוד אימות (6 ספרות)</label>
+                    <input type="text" id="verification-code" placeholder="000000" maxlength="6"
+                           class="w-full px-4 py-3 rounded-xl border border-slate-200 text-center tracking-widest text-lg font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                </div>
+                
+                <button id="btn-verify" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3 rounded-xl shadow-lg shadow-emerald-200 transition-all mt-2">
+                    אימות והמשך
+                </button>
+            </div>
+
+            <p id="error-msg" class="text-red-500 text-sm text-center mt-3 hidden"></p>
+        </div>
+
+        <div class="p-6 text-center border-t border-slate-50 bg-slate-50/50">
+            <span class="text-xs text-slate-400">© כל הזכויות שמורות ללימודי חוץ</span>
+        </div>
+
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+        // הגדרות ה-Firebase שלך
+        const firebaseConfig = {
+            apiKey: "AIzaSyCHjlH4KXUbgUYqcJmQzYP9Mn-wJk6C1yY",
+            authDomain: "college-student-app-e5a4d.firebaseapp.com",
+            projectId: "college-student-app-e5a4d",
+            storageBucket: "college-student-app-e5a4d.firebasestorage.app",
+            messagingSenderId: "515186555772",
+            appId: "1:515186555772:web:368a5b1f9251573c91c2f9"
+        };
+
+        // אתחול
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // אלמנטים מהמסך
+        const loginForm = document.getElementById('login-form');
+        const faForm = document.getElementById('2fa-form');
+        const errorMsg = document.getElementById('error-msg');
+        
+        // כפתור כניסה ראשוני
+        document.getElementById('btn-login').addEventListener('click', () => {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if(user === "123456" && pass === "1234") {
+                errorMsg.classList.add('hidden');
+                loginForm.classList.add('hidden');
+                faForm.classList.remove('hidden'); // מעביר למסך הזדהות כפולה
+            } else {
+                errorMsg.innerText = "שם משתמש או סיסמה שגויים (לדמו: 123456 וסיסמה 1234)";
+                errorMsg.classList.remove('hidden');
+            }
+        });
+
+        // כפתור אימות כפול
+        document.getElementById('btn-verify').addEventListener('click', () => {
+            const code = document.getElementById('verification-code').value;
+            if(code === "654321") {
+                alert("נכנסת בהצלחה! בשלב הבא נבנה את מסך הבית הדינמי.");
+                // כאן יבוא המעבר למסך הבית בשלבים הבאים
+            } else {
+                errorMsg.innerText = "קוד אימות שגוי (לדמו: 654321)";
+                errorMsg.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
