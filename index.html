@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אפליקציית סטודנטים | היחידה ללימודי חוץ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2=family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         hutz: {
-                            gold: '#E3A113',   /* זהב/כתום מהלוגו */
-                            blue: '#0F62AC',   /* כחול רויאל מהלוגו */
-                            silver: '#8A8D8F', /* כסף/אפור מהלוגו */
+                            gold: '#E3A113',
+                            blue: '#0F62AC',
+                            silver: '#8A8D8F',
                             darkText: '#3A3A3A',
                             bg: '#F8FAFC'
                         }
@@ -75,7 +75,6 @@
                         אימות קוד והמשך
                     </button>
                 </div>
-                
                 <p id="error-msg" class="text-red-500 text-xs text-center font-bold hidden"></p>
             </div>
 
@@ -85,11 +84,10 @@
         </div>
 
         <div id="view-dashboard" class="flex-1 flex flex-col justify-between hidden bg-slate-50">
+            
             <div class="bg-white px-5 py-4 border-b border-slate-100 flex justify-between items-center shadow-sm">
                 <div class="flex items-center space-x-3 space-x-reverse">
-                    <div class="w-8 h-8 rounded-full bg-hutz-blue/10 flex items-center justify-center text-hutz-blue font-bold text-xs">
-                        סט
-                    </div>
+                    <div class="w-8 h-8 rounded-full bg-hutz-blue/10 flex items-center justify-center text-hutz-blue font-bold text-xs">ל"ח</div>
                     <div>
                         <p class="text-slate-400 text-[10px] font-medium leading-none">סטודנט/ית במכללה</p>
                         <h2 id="student-name" class="text-sm font-bold mt-1 text-hutz-darkText">טוען...</h2>
@@ -102,10 +100,8 @@
                 </div>
             </div>
 
-            <div class="p-4 flex-1 space-y-4 overflow-y-auto max-h-[66vh]">
-                
-                <div class="bg-gradient-to-l from-hutz-blue to-blue-800 p-4 rounded-2xl text-white shadow-md relative overflow-hidden">
-                    <div class="absolute -left-4 -bottom-4 text-6xl opacity-10">⏰</div>
+            <div id="tab-home-content" class="p-4 flex-1 space-y-4 overflow-y-auto max-h-[66vh]">
+                <div class="bg-gradient-to-l from-hutz-blue to-blue-800 p-4 rounded-2xl text-white shadow-md">
                     <span class="bg-white/20 text-[9px] uppercase font-bold px-2 py-0.5 rounded-full">השיעור הקרוב שלי</span>
                     <h4 class="font-bold text-sm mt-2" id="next-lesson-name">טוען מערכת שעות...</h4>
                     <div class="flex justify-between items-center text-xs text-blue-100 mt-2 pt-2 border-t border-white/10">
@@ -121,23 +117,19 @@
                     </a>
                     <button onclick="openInvoices()" class="bg-white hover:border-hutz-blue p-3 rounded-xl border border-slate-100 transition-all text-center shadow-sm block">
                         <span class="block text-lg mb-1">💳</span>
-                        <span class="text-[11px] font-bold text-hutz-darkText block">חשבוניות וכספים</span>
+                        <span class="text-[11px] font-bold text-hutz-darkText block">חשבוניות</span>
                     </button>
                     <button onclick="alert('הורדת קובץ סילבוס קורס מעודכן ל-2026')" class="bg-white hover:border-hutz-blue p-3 rounded-xl border border-slate-100 transition-all text-center shadow-sm block">
                         <span class="block text-lg mb-1">📋</span>
-                        <span class="text-[11px] font-bold text-hutz-darkText block">סילבוס לימודים</span>
+                        <span class="text-[11px] font-bold text-hutz-darkText block">סילבוס</span>
                     </button>
                 </div>
 
-                <div class="grid grid-cols-2 gap-2">
+                <div class="grid grid-cols-1">
                     <a id="link-certificate" href="#" class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex items-center justify-center space-x-2 space-x-reverse text-xs font-bold text-hutz-blue">
                         <span>📜</span>
                         <span>הורדת אישור לימודים רשמי</span>
                     </a>
-                    <div class="bg-white p-2 rounded-xl border border-slate-100 shadow-sm flex flex-col justify-center text-center text-[10px] text-slate-500">
-                        <span class="font-bold text-slate-700">🔒 אבטחה מופעלת</span>
-                        <span>הזדהות דו-שלבית</span>
-                    </div>
                 </div>
 
                 <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
@@ -150,39 +142,52 @@
                             <p class="font-bold text-slate-700">הרשמה למועדי ב'</p>
                             <p class="text-slate-500 text-[11px] mt-0.5">ההרשמה למבחני הסמכה נפתחה בפורטל.</p>
                         </div>
-                        <div class="p-2 bg-slate-50 rounded-lg border-r-2 border-hutz-blue">
-                            <p class="font-bold text-slate-700">ספריית המכללה</p>
-                            <p class="text-slate-500 text-[11px] mt-0.5">גישה חופשית למאגרים אקדמיים עודכנה במודל.</p>
-                        </div>
                     </div>
                 </div>
 
                 <div>
                     <h3 class="text-xs font-bold text-slate-500 mb-2 tracking-wide px-1">הקורס שלי ורכז מטפל</h3>
-                    <div id="courses-container" class="space-y-2">
-                        <p class="text-xs text-slate-400 text-center py-2">טוען קורסים...</p>
+                    <div id="courses-container" class="space-y-2"></div>
+                </div>
+            </div>
+
+            <div id="tab-tickets-content" class="p-4 flex-1 space-y-4 overflow-y-auto max-h-[66vh] hidden">
+                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                    <h3 class="text-xs font-bold text-hutz-darkText flex items-center">
+                        <span class="w-1.5 h-3 bg-hutz-blue ml-1.5 rounded-sm inline-block"></span>
+                        פתיחת פנייה חדשה למזכירות / רכזת
+                    </h3>
+                    <div>
+                        <label class="block text-[11px] text-slate-500 mb-1">נושא הפנייה</label>
+                        <select id="ticket-topic" class="w-full p-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-hutz-blue">
+                            <option>בקשה לאישור חריג / מועד מיוחד</option>
+                            <option>בירור בנושא כספים וחשבוניות</option>
+                            <option>ערעור על ציון או מטלה</option>
+                            <option>בקשה לשינוי / הקפאת מסלול לימודים</option>
+                        </select>
                     </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-500 mb-1">תוכן הפנייה פירוט</label>
+                        <textarea id="ticket-content" rows="3" placeholder="הקלידו כאן את פרטי הבקשה שלכם..." class="w-full p-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-hutz-blue text-right"></textarea>
+                    </div>
+                    <button id="btn-submit-ticket" class="w-full bg-hutz-blue text-white font-bold py-2 rounded-xl text-xs shadow-md hover:bg-opacity-90 transition-all">
+                        שליחת פנייה ל-CRM ומעקב
+                    </button>
                 </div>
 
-                <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-xs text-slate-600 space-y-1.5">
-                    <p class="font-bold text-hutz-darkText text-[11px] border-b pb-1 mb-1">📞 פרטי רישום ותמיכה</p>
-                    <div class="flex justify-between text-[11px]">
-                        <span>תמיכה טכנית ושירות לקוחות:</span>
-                        <span class="font-bold text-hutz-blue">073-1234567</span>
-                    </div>
-                    <div class="flex justify-between text-[11px]">
-                        <span>מחלקת רישום סטודנטים:</span>
-                        <span class="font-bold text-hutz-blue">info@limudey-hutz.co.il</span>
-                    </div>
+                <div>
+                    <h3 class="text-xs font-bold text-slate-500 mb-2 tracking-wide px-1">סטטוס פניות קודמות</h3>
+                    <div id="tickets-list-container" class="space-y-2">
+                        </div>
                 </div>
             </div>
 
             <div class="border-t border-slate-100 p-2.5 bg-white flex justify-around text-center shadow-lg">
-                <button class="text-hutz-blue font-bold text-xs flex flex-col items-center">
+                <button id="btn-tab-home" class="text-hutz-blue font-bold text-xs flex flex-col items-center transition-all">
                     <span class="text-lg">🏠</span>
                     <span class="mt-0.5">דף הבית</span>
                 </button>
-                <button class="text-slate-400 hover:text-hutz-darkText text-xs flex flex-col items-center opacity-60" onclick="alert('בשלב הבא נפתח את ממשק הפניות ונעקוב אחר הסטטוס שלהן!')">
+                <button id="btn-tab-tickets" class="text-slate-400 hover:text-hutz-darkText text-xs flex flex-col items-center transition-all">
                     <span class="text-lg">💬</span>
                     <span class="mt-0.5">פניות ומטלות</span>
                 </button>
@@ -203,9 +208,7 @@
                         <p class="font-bold text-slate-700">חשבונית מס/קבלה #8821</p>
                         <p class="text-slate-400 text-[10px]">תאריך: 15/01/2026 | סכום: 4,500 ₪</p>
                     </div>
-                    <button onclick="alert('העתק מהחשבונית נשלח בהצלחה למייל הסטודנט שלך!')" class="bg-hutz-blue text-white px-2 py-1 rounded text-[10px] font-bold">
-                        📧 שלח למייל
-                    </button>
+                    <button onclick="alert('העתק מהחשבונית נשלח בהצלחה למייל!')" class="bg-hutz-blue text-white px-2 py-1 rounded text-[10px] font-bold">📧 שלח</button>
                 </div>
             </div>
         </div>
@@ -213,7 +216,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-        import { getFirestore, doc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+        import { getFirestore, doc, getDoc, collection, getDocs, addDoc, query, where } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyCHjlH4KXUbgUYqcJmQzYP9Mn-wJk6C1yY",
@@ -233,12 +236,34 @@
         const faFields = document.getElementById('2fa-fields');
         const errorMsg = document.getElementById('error-msg');
 
+        // אלמנטים של הטאבים
+        const tabHomeContent = document.getElementById('tab-home-content');
+        const tabTicketsContent = document.getElementById('tab-tickets-content');
+        const btnTabHome = document.getElementById('btn-tab-home');
+        const btnTabTickets = document.getElementById('btn-tab-tickets');
+
         let currentStudentId = "";
 
-        // פונקציות חלון חשבוניות גלובליות
         window.openInvoices = function() { document.getElementById('invoice-modal').classList.remove('hidden'); }
         window.closeInvoices = function() { document.getElementById('invoice-modal').classList.add('hidden'); }
 
+        // ניהול מעבר בין טאבים
+        btnTabHome.addEventListener('click', () => {
+            tabHomeContent.classList.remove('hidden');
+            tabTicketsContent.classList.add('hidden');
+            btnTabHome.className = "text-hutz-blue font-bold text-xs flex flex-col items-center transition-all";
+            btnTabTickets.className = "text-slate-400 hover:text-hutz-darkText text-xs flex flex-col items-center transition-all opacity-60";
+        });
+
+        btnTabTickets.addEventListener('click', () => {
+            tabHomeContent.classList.add('hidden');
+            tabTicketsContent.classList.remove('hidden');
+            btnTabTickets.className = "text-hutz-blue font-bold text-xs flex flex-col items-center transition-all";
+            btnTabHome.className = "text-slate-400 hover:text-hutz-darkText text-xs flex flex-col items-center transition-all opacity-60";
+            loadStudentTickets(currentStudentId); // טעינת פניות ברגע שעוברים לטאב פניות
+        });
+
+        // כניסה לחשבון
         document.getElementById('btn-login').addEventListener('click', () => {
             const user = document.getElementById('username').value.trim();
             const pass = document.getElementById('password').value.trim();
@@ -266,6 +291,7 @@
             }
         });
 
+        // טעינת נתונים ראשיים
         async function loadStudentData(studentId) {
             try {
                 const studentDocRef = doc(db, "students", studentId);
@@ -286,41 +312,89 @@
                 const container = document.getElementById('courses-container');
                 container.innerHTML = "";
 
-                if(coursesSnap.empty) {
-                    container.innerHTML = "<p class='text-xs text-slate-400 text-center py-2'>לא נמצאו קורסים משויכים.</p>";
-                    return;
-                }
-
                 coursesSnap.forEach((doc) => {
                     const course = doc.data();
-                    
-                    // עדכון השיעור הקרוב באופן דינמי לפי הקורס הראשון שנמצא
                     document.getElementById('next-lesson-name').innerText = course.courseName;
 
-                    const courseHtml = `
+                    container.innerHTML += `
                         <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm space-y-2">
                             <div class="flex justify-between items-center">
                                 <h4 class="font-bold text-hutz-darkText text-xs">${course.courseName}</h4>
-                                <span class="bg-blue-50 text-hutz-blue text-[9px] font-bold px-2 py-0.5 rounded-full border border-blue-100">סטודנט פעיל</span>
+                                <span class="bg-blue-50 text-hutz-blue text-[9px] font-bold px-2 py-0.5 rounded-full">פעיל</span>
                             </div>
                             <div class="pt-2 border-t border-slate-100 flex justify-between items-center text-xs text-slate-600">
                                 <div>
                                     <p class="font-bold text-slate-700">רכז/ת: ${course.coordinatorName}</p>
                                     <p class="text-[10px] text-slate-400">${course.coordinatorEmail}</p>
                                 </div>
-                                <button onclick="alert('יוצר פנייה ישירה לרכזת ${course.coordinatorName} בגין קורס זה')" class="bg-hutz-blue text-white hover:bg-opacity-90 text-[10px] font-bold px-2.5 py-1.5 rounded-lg transition-all shadow-sm">
-                                    📞 פנייה לרכז/ת
-                                </button>
+                                <button onclick="alert('יוצר פנייה ישירה לרכזת')" class="bg-hutz-blue text-white text-[10px] font-bold px-2.5 py-1.5 rounded-lg">📞 פנייה</button>
                             </div>
                         </div>
                     `;
-                    container.innerHTML += courseHtml;
+                });
+            } catch (error) { console.error(error); }
+        }
+
+        // טעינת פניות הסטודנט מפיירבייס
+        async function loadStudentTickets(studentId) {
+            const listContainer = document.getElementById('tickets-list-container');
+            listContainer.innerHTML = "<p class='text-xs text-slate-400 text-center py-2'>טוען היסטוריית פניות...</p>";
+            
+            try {
+                const q = query(collection(db, "tickets"), where("studentId", "==", studentId));
+                const querySnapshot = await getDocs(q);
+                listContainer.innerHTML = "";
+
+                if(querySnapshot.empty) {
+                    listContainer.innerHTML = "<p class='text-xs text-slate-400 text-center py-2'>אין לך פניות פתוחות במערכת.</p>";
+                    return;
+                }
+
+                querySnapshot.forEach((doc) => {
+                    const ticket = doc.data();
+                    let statusColor = "bg-amber-50 text-amber-700 border-amber-200";
+                    if(ticket.status === "אושר" || ticket.status === "טופל") statusColor = "bg-emerald-50 text-emerald-700 border-emerald-200";
+                    
+                    listContainer.innerHTML += `
+                        <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm space-y-1">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-slate-800 text-xs">${ticket.topic}</span>
+                                <span class="${statusColor} text-[9px] font-bold px-2 py-0.5 rounded-full border">${ticket.status}</span>
+                            </div>
+                            <p class="text-slate-500 text-[11px]">${ticket.content}</p>
+                            <p class="text-[9px] text-slate-400 text-left pt-1">${ticket.date || 'היום'}</p>
+                        </div>
+                    `;
+                });
+            } catch (error) { console.error(error); }
+        }
+
+        // שליחת פנייה חדשה ושמירתה ב-Firebase
+        document.getElementById('btn-submit-ticket').addEventListener('click', async () => {
+            const topic = document.getElementById('ticket-topic').value;
+            const content = document.getElementById('ticket-content').value.trim();
+
+            if(!content) {
+                alert("אנא מלאו את פירוט התוכן של הפנייה.");
+                return;
+            }
+
+            try {
+                await addDoc(collection(db, "tickets"), {
+                    studentId: currentStudentId,
+                    topic: topic,
+                    content: content,
+                    status: "בטיפול",
+                    date: new Date().toLocaleDateString('he-IL')
                 });
 
+                alert("הפנייה נשלחה בהצלחה ונרשמה בדאטהבייס!");
+                document.getElementById('ticket-content').value = ""; // ניקוי השדה
+                await loadStudentTickets(currentStudentId); // רענון הרשימה במסך
             } catch (error) {
-                console.error("Error:", error);
+                alert("שגיאה בשמירת הפנייה.");
             }
-        }
+        });
     </script>
 </body>
 </html>
